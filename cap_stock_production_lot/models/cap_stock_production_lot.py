@@ -27,9 +27,9 @@ class ProductionLot(models.Model):
 
         return base35
         
-    def base35decode(self, num):
+    #def base35decode(self, num):
         """Convert from Base35 to Base10"""
-        return int(num, 35)
+        #return int(num, 35)
         
     def _set_container_on_ref(self):
         for rec in self:
@@ -41,14 +41,14 @@ class ProductionLot(models.Model):
                 'ref': cont,
             })
             
-    def _generate_lot_name(self, cont):
-        for rec in self:
-            num = cont[1:]
-            base10 = self.base35decode(num)
+    #def _generate_lot_name(self, cont):
+        #for rec in self:
+            #num = cont[1:]
+            #base10 = self.base35decode(num)
             
-            name = 'C' + str(base10).zfill(10)
+            #name = 'C' + str(base10).zfill(10)
             
-            return name
+            #return name
             
     @api.model_create_multi
     def create(self, vals_list):
