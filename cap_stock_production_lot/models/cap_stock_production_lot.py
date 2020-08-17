@@ -58,10 +58,10 @@ class ProductionLot(models.Model):
         seq_num = self.name
         base35 = self.base35encode(int(seq_num))
         cont = 'D' + base35.zfill(6)
-            self.write({
-                'name': cont,
-                'ref': cont,
-            })
+        self.write({
+            'name': cont,
+            'ref': cont,
+        })
         
         return res
             
