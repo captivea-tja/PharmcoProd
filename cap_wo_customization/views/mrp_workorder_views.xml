@@ -1,0 +1,24 @@
+<odoo>
+    <record id="cap_mrp_workorder_view_form_tablet_inherited_1" model="ir.ui.view">
+        <field name="name">cap.mrp.workorder.view.form.tablet.inherited.1</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_workorder_actions')]" position="after">
+                <div name='notes'>
+                    <field name="operation_note"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="cap_mrp_workorder_view_form_inherited_1" model="ir.ui.view">
+        <field name="name">cap.mrp.workorder.view.form.inherited.1</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_produced']" position="after">
+                <field name="user_ids" widget="many2many_tags" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
