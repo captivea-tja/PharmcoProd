@@ -54,7 +54,14 @@ class ProductionLot(models.Model):
     def create(self, vals_list):
         res = super(ProductionLot,self).create(vals_list)
         
-        res._set_container_on_ref()
+        #res._set_container_on_ref()
+        seq_num = self.name
+        base35 = self.base35encode(int(seq_num))
+        cont = 'D' + base35.zfill(6)
+            self.write({
+                'name': cont,
+                'ref': cont,
+            })
         
         return res
             
