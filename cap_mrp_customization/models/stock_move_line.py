@@ -11,7 +11,7 @@ class StockMoveLine(models.Model):
     supplier_lot = fields.Char(string="Supplier's Lot")
     supplier_id = fields.Many2one('res.partner', string="Supplier")
     tare_weight = fields.Float(string="Tare Weight")
-    component_weight = fields.Float(string="Gross Weight")
+    component_weight = fields.Float(string="Component Weight")
     gross_weight = fields.Float(string="Gross Weight")
     container_type = fields.Selection([('1 GAL', '1 GAL'), ('4x1 BOX', '4x1 BOX'), ('BAG', 'BAG'),
         ('BOTTLE', 'BOTTLE'), ('BOTTLE-2.5', 'BOTTLE-2.5'), ('BOX', 'BOX'), ('DELTANG-5', 'DELTANG-5'),
