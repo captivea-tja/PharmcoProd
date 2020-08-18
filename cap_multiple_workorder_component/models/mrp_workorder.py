@@ -8,88 +8,88 @@ class MrpProductionWorkcenterLine(models.Model):
     _inherit = 'mrp.workorder'
 
     current_quality_check_id_2 = fields.Many2one(
-        'quality.check', "Current Quality Check", store=True, check_company=True)
-    component_id_2 = fields.Many2one('product.product', related='current_quality_check_id_2.component_id')
-    component_tracking_2 = fields.Selection(related='component_id_2.tracking', string="Is Component Tracked", readonly=False)
-    component_remaining_qty_2 = fields.Float('Remaining Quantity for Component', compute='_compute_component_data', digits='Product Unit of Measure')
-    component_uom_id_2 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM")
-    control_date_2 = fields.Datetime(related='current_quality_check_id_2.control_date', readonly=False)
-    lot_id_2 = fields.Many2one(related='current_quality_check_id_2.lot_id', readonly=False)
-    workorder_line_id_2 = fields.Many2one(related='current_quality_check_id_2.workorder_line_id', readonly=False)
-    note_2 = fields.Html(related='current_quality_check_id_2.note')
-    quality_state_2 = fields.Selection(related='current_quality_check_id_2.quality_state', string="Quality State", readonly=False)
-    qty_done_2 = fields.Float(related='current_quality_check_id_2.qty_done', readonly=False)
-    test_type_2_id = fields.Many2one('quality.point.test_type', 'Test Type', related='current_quality_check_id_2.test_type_id')
-    test_type_2 = fields.Char(related='test_type_2_id.technical_name')
-    user_id_2 = fields.Many2one(related='current_quality_check_id_2.user_id', readonly=False)
-    picture_2 = fields.Binary(related='current_quality_check_id_2.picture', readonly=False)
-    measure_2 = fields.Float(related='current_quality_check_id_2.measure', readonly=False)
-    measure_success_2 = fields.Selection(related='current_quality_check_id_2.measure_success', readonly=False)
-    norm_unit_2 = fields.Char(related='current_quality_check_id_2.norm_unit', readonly=False)
-    component_qty_to_do_2 = fields.Float(compute='_compute_component_qty_to_do')
+        'quality.check', "Current Quality Check 2", store=True, check_company=True)
+    component_id_2 = fields.Many2one('product.product', related='current_quality_check_id_2.component_id', string="Component 2")
+    component_tracking_2 = fields.Selection(related='component_id_2.tracking', string="Is Component Tracked 2", readonly=False)
+    component_remaining_qty_2 = fields.Float('Remaining Quantity for Component 2', compute='_compute_component_data', digits='Product Unit of Measure')
+    component_uom_id_2 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM 2")
+    control_date_2 = fields.Datetime(related='current_quality_check_id_2.control_date', readonly=False, string="Control Date 2")
+    lot_id_2 = fields.Many2one(related='current_quality_check_id_2.lot_id', readonly=False, string="Lot 2")
+    workorder_line_id_2 = fields.Many2one(related='current_quality_check_id_2.workorder_line_id', readonly=False, string="Workorder Line 2")
+    note_2 = fields.Html(related='current_quality_check_id_2.note', string="Note 2")
+    quality_state_2 = fields.Selection(related='current_quality_check_id_2.quality_state', string="Quality State 2", readonly=False)
+    qty_done_2 = fields.Float(related='current_quality_check_id_2.qty_done', readonly=False, string="Done 2")
+    test_type_2_id = fields.Many2one('quality.point.test_type', 'Test Type 2', related='current_quality_check_id_2.test_type_id')
+    test_type_2 = fields.Char(related='test_type_2_id.technical_name', string="Technical name 2")
+    user_id_2 = fields.Many2one(related='current_quality_check_id_2.user_id', readonly=False, string="Responsible 2")
+    picture_2 = fields.Binary(related='current_quality_check_id_2.picture', readonly=False, string="Picture 2")
+    measure_2 = fields.Float(related='current_quality_check_id_2.measure', readonly=False, string="Measure 2")
+    measure_success_2 = fields.Selection(related='current_quality_check_id_2.measure_success', readonly=False, string="Measure Success 2")
+    norm_unit_2 = fields.Char(related='current_quality_check_id_2.norm_unit', readonly=False, string="Norm Unit 2")
+    component_qty_to_do_2 = fields.Float(compute='_compute_component_qty_to_do', string="Component Quantity 2")
 
     current_quality_check_id_3 = fields.Many2one(
-        'quality.check', "Current Quality Check", store=True, check_company=True)
-    component_id_3 = fields.Many2one('product.product', related='current_quality_check_id_3.component_id')
-    component_tracking_3 = fields.Selection(related='component_id_3.tracking', string="Is Component Tracked", readonly=False)
-    component_remaining_qty_3 = fields.Float('Remaining Quantity for Component', compute='_compute_component_data', digits='Product Unit of Measure')
-    component_uom_id_3 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM")
-    control_date_3 = fields.Datetime(related='current_quality_check_id_3.control_date', readonly=False)
-    lot_id_3 = fields.Many2one(related='current_quality_check_id_3.lot_id', readonly=False)
-    workorder_line_id_3 = fields.Many2one(related='current_quality_check_id_3.workorder_line_id', readonly=False)
-    note_3 = fields.Html(related='current_quality_check_id_3.note')
-    quality_state_3 = fields.Selection(related='current_quality_check_id_3.quality_state', string="Quality State", readonly=False)
-    qty_done_3 = fields.Float(related='current_quality_check_id_3.qty_done', readonly=False)
-    test_type_3_id = fields.Many2one('quality.point.test_type', 'Test Type', related='current_quality_check_id_3.test_type_id')
-    test_type_3 = fields.Char(related='test_type_3_id.technical_name')
-    user_id_3 = fields.Many2one(related='current_quality_check_id_3.user_id', readonly=False)
-    picture_3 = fields.Binary(related='current_quality_check_id_3.picture', readonly=False)
-    measure_3 = fields.Float(related='current_quality_check_id_3.measure', readonly=False)
-    measure_success_3 = fields.Selection(related='current_quality_check_id_3.measure_success', readonly=False)
-    norm_unit_3 = fields.Char(related='current_quality_check_id_3.norm_unit', readonly=False)
-    component_qty_to_do_3 = fields.Float(compute='_compute_component_qty_to_do')
+        'quality.check', "Current Quality Check 3", store=True, check_company=True)
+    component_id_3 = fields.Many2one('product.product', related='current_quality_check_id_3.component_id', string="Component 3")
+    component_tracking_3 = fields.Selection(related='component_id_3.tracking', string="Is Component Tracked 3", readonly=False)
+    component_remaining_qty_3 = fields.Float('Remaining Quantity for Component 3', compute='_compute_component_data', digits='Product Unit of Measure')
+    component_uom_id_3 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM 3")
+    control_date_3 = fields.Datetime(related='current_quality_check_id_3.control_date', readonly=False, string="Control Date 3")
+    lot_id_3 = fields.Many2one(related='current_quality_check_id_3.lot_id', readonly=False, string="Lot 3")
+    workorder_line_id_3 = fields.Many2one(related='current_quality_check_id_3.workorder_line_id', readonly=False, string="Workorder Line 3")
+    note_3 = fields.Html(related='current_quality_check_id_3.note', string="Note 3")
+    quality_state_3 = fields.Selection(related='current_quality_check_id_3.quality_state', string="Quality State 3", readonly=False)
+    qty_done_3 = fields.Float(related='current_quality_check_id_3.qty_done', readonly=False, string="Done 3")
+    test_type_3_id = fields.Many2one('quality.point.test_type', 'Test Type 3', related='current_quality_check_id_3.test_type_id')
+    test_type_3 = fields.Char(related='test_type_3_id.technical_name', string="Technical name 3")
+    user_id_3 = fields.Many2one(related='current_quality_check_id_3.user_id', readonly=False, string="Responsible 3")
+    picture_3 = fields.Binary(related='current_quality_check_id_3.picture', readonly=False, string="Picture 3")
+    measure_3 = fields.Float(related='current_quality_check_id_3.measure', readonly=False, string="Measure 3")
+    measure_success_3 = fields.Selection(related='current_quality_check_id_3.measure_success', readonly=False, string="Measure Success 3")
+    norm_unit_3 = fields.Char(related='current_quality_check_id_3.norm_unit', readonly=False, string="Norm Unit 3")
+    component_qty_to_do_3 = fields.Float(compute='_compute_component_qty_to_do', string="Component Quantity 3")
 
     current_quality_check_id_4 = fields.Many2one(
-        'quality.check', "Current Quality Check", store=True, check_company=True)
-    component_id_4 = fields.Many2one('product.product', related='current_quality_check_id_4.component_id')
-    component_tracking_4 = fields.Selection(related='component_id_4.tracking', string="Is Component Tracked", readonly=False)
-    component_remaining_qty_4 = fields.Float('Remaining Quantity for Component', compute='_compute_component_data', digits='Product Unit of Measure')
-    component_uom_id_4 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM")
-    control_date_4 = fields.Datetime(related='current_quality_check_id_4.control_date', readonly=False)
-    lot_id_4 = fields.Many2one(related='current_quality_check_id_4.lot_id', readonly=False)
-    workorder_line_id_4 = fields.Many2one(related='current_quality_check_id_4.workorder_line_id', readonly=False)
-    note_4 = fields.Html(related='current_quality_check_id_4.note')
-    quality_state_4 = fields.Selection(related='current_quality_check_id_4.quality_state', string="Quality State", readonly=False)
-    qty_done_4 = fields.Float(related='current_quality_check_id_4.qty_done', readonly=False)
-    test_type_4_id = fields.Many2one('quality.point.test_type', 'Test Type', related='current_quality_check_id_4.test_type_id')
-    test_type_4 = fields.Char(related='test_type_4_id.technical_name')
-    user_id_4 = fields.Many2one(related='current_quality_check_id_4.user_id', readonly=False)
-    picture_4 = fields.Binary(related='current_quality_check_id_4.picture', readonly=False)
-    measure_4 = fields.Float(related='current_quality_check_id_4.measure', readonly=False)
-    measure_success_4 = fields.Selection(related='current_quality_check_id_4.measure_success', readonly=False)
-    norm_unit_4 = fields.Char(related='current_quality_check_id_4.norm_unit', readonly=False)
-    component_qty_to_do_4 = fields.Float(compute='_compute_component_qty_to_do')
+        'quality.check', "Current Quality Check 4", store=True, check_company=True)
+    component_id_4 = fields.Many2one('product.product', related='current_quality_check_id_4.component_id', string="Component 4")
+    component_tracking_4 = fields.Selection(related='component_id_4.tracking', string="Is Component Tracked 4", readonly=False)
+    component_remaining_qty_4 = fields.Float('Remaining Quantity for Component 4', compute='_compute_component_data', digits='Product Unit of Measure')
+    component_uom_id_4 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM 4")
+    control_date_4 = fields.Datetime(related='current_quality_check_id_4.control_date', readonly=False, string="Control Date 4")
+    lot_id_4 = fields.Many2one(related='current_quality_check_id_4.lot_id', readonly=False, string="Lot 4")
+    workorder_line_id_4 = fields.Many2one(related='current_quality_check_id_4.workorder_line_id', readonly=False, string="Workorder Line 4")
+    note_4 = fields.Html(related='current_quality_check_id_4.note', string="Note 4")
+    quality_state_4 = fields.Selection(related='current_quality_check_id_4.quality_state', string="Quality State 4", readonly=False)
+    qty_done_4 = fields.Float(related='current_quality_check_id_4.qty_done', readonly=False, string="Done 4")
+    test_type_4_id = fields.Many2one('quality.point.test_type', 'Test Type 4', related='current_quality_check_id_4.test_type_id')
+    test_type_4 = fields.Char(related='test_type_4_id.technical_name', string="Technical name 4")
+    user_id_4 = fields.Many2one(related='current_quality_check_id_4.user_id', readonly=False, string="Responsible 4")
+    picture_4 = fields.Binary(related='current_quality_check_id_4.picture', readonly=False, string="Picture 4")
+    measure_4 = fields.Float(related='current_quality_check_id_4.measure', readonly=False, string="Measure 4")
+    measure_success_4 = fields.Selection(related='current_quality_check_id_4.measure_success', readonly=False, string="Measure Success 4")
+    norm_unit_4 = fields.Char(related='current_quality_check_id_4.norm_unit', readonly=False, string="Norm Unit 4")
+    component_qty_to_do_4 = fields.Float(compute='_compute_component_qty_to_do', string="Component Quantity 4")
 
     current_quality_check_id_5 = fields.Many2one(
-        'quality.check', "Current Quality Check", store=True, check_company=True)
-    component_id_5 = fields.Many2one('product.product', related='current_quality_check_id_5.component_id')
-    component_tracking_5 = fields.Selection(related='component_id_5.tracking', string="Is Component Tracked", readonly=False)
-    component_remaining_qty_5 = fields.Float('Remaining Quantity for Component', compute='_compute_component_data', digits='Product Unit of Measure')
-    component_uom_id_5 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM")
-    control_date_5 = fields.Datetime(related='current_quality_check_id_5.control_date', readonly=False)
-    lot_id_5 = fields.Many2one(related='current_quality_check_id_5.lot_id', readonly=False)
-    workorder_line_id_5 = fields.Many2one(related='current_quality_check_id_5.workorder_line_id', readonly=False)
-    note_5 = fields.Html(related='current_quality_check_id_5.note')
-    quality_state_5 = fields.Selection(related='current_quality_check_id_5.quality_state', string="Quality State", readonly=False)
-    qty_done_5 = fields.Float(related='current_quality_check_id_5.qty_done', readonly=False)
-    test_type_5_id = fields.Many2one('quality.point.test_type', 'Test Type', related='current_quality_check_id_5.test_type_id')
-    test_type_5 = fields.Char(related='test_type_5_id.technical_name')
-    user_id_5 = fields.Many2one(related='current_quality_check_id_5.user_id', readonly=False)
-    picture_5 = fields.Binary(related='current_quality_check_id_5.picture', readonly=False)
-    measure_5 = fields.Float(related='current_quality_check_id_5.measure', readonly=False)
-    measure_success_5 = fields.Selection(related='current_quality_check_id_5.measure_success', readonly=False)
-    norm_unit_5 = fields.Char(related='current_quality_check_id_5.norm_unit', readonly=False)
-    component_qty_to_do_5 = fields.Float(compute='_compute_component_qty_to_do')
+        'quality.check', "Current Quality Check 5", store=True, check_company=True)
+    component_id_5 = fields.Many2one('product.product', related='current_quality_check_id_5.component_id', string="Component 5")
+    component_tracking_5 = fields.Selection(related='component_id_5.tracking', string="Is Component Tracked 5", readonly=False)
+    component_remaining_qty_5 = fields.Float('Remaining Quantity for Component 5', compute='_compute_component_data', digits='Product Unit of Measure')
+    component_uom_id_5 = fields.Many2one('uom.uom', compute='_compute_component_data', string="Component UoM 5")
+    control_date_5 = fields.Datetime(related='current_quality_check_id_5.control_date', readonly=False, string="Control Date 5")
+    lot_id_5 = fields.Many2one(related='current_quality_check_id_5.lot_id', readonly=False, string="Lot 5")
+    workorder_line_id_5 = fields.Many2one(related='current_quality_check_id_5.workorder_line_id', readonly=False, string="Workorder Line 5")
+    note_5 = fields.Html(related='current_quality_check_id_5.note', string="Note 5")
+    quality_state_5 = fields.Selection(related='current_quality_check_id_5.quality_state', string="Quality State 5", readonly=False)
+    qty_done_5 = fields.Float(related='current_quality_check_id_5.qty_done', readonly=False, string="Done 5")
+    test_type_5_id = fields.Many2one('quality.point.test_type', 'Test Type 5', related='current_quality_check_id_5.test_type_id')
+    test_type_5 = fields.Char(related='test_type_5_id.technical_name', string="Technical name 5")
+    user_id_5 = fields.Many2one(related='current_quality_check_id_5.user_id', readonly=False, string="Responsible 5")
+    picture_5 = fields.Binary(related='current_quality_check_id_5.picture', readonly=False, string="Picture 5")
+    measure_5 = fields.Float(related='current_quality_check_id_5.measure', readonly=False, string="Measure 5")
+    measure_success_5 = fields.Selection(related='current_quality_check_id_5.measure_success', readonly=False, string="Measure Success 5")
+    norm_unit_5 = fields.Char(related='current_quality_check_id_5.norm_unit', readonly=False, string="Norm Unit 5")
+    component_qty_to_do_5 = fields.Float(compute='_compute_component_qty_to_do', string="Component Quantity 5")
 
 
     test_type_all = fields.Boolean(compute='_compute_test_type_components_all')
@@ -157,24 +157,28 @@ class MrpProductionWorkcenterLine(models.Model):
                 wo.component_remaining_qty = self._prepare_component_quantity(move, wo.qty_producing) - sum(completed_lines.mapped('qty_done'))
                 wo.component_uom_id = lines[:1].product_uom_id
 
+            if wo.test_type_2 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_2 == 'none':
                 move_2 = wo.current_quality_check_id_2.workorder_line_id.move_id
                 lines_2 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_2)
                 completed_lines_2 = lines_2.filtered(lambda l: l.lot_id) if wo.component_id_2.tracking != 'none' else lines_2
                 wo.component_remaining_qty_2 = self._prepare_component_quantity(move_2, wo.qty_producing) - sum(completed_lines_2.mapped('qty_done'))
                 wo.component_uom_id_2 = lines[:1].product_uom_id
 
+            if wo.test_type_3 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_3 == 'none':
                 move_3 = wo.current_quality_check_id_3.workorder_line_id.move_id
                 lines_3 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_3)
                 completed_lines_3 = lines_3.filtered(lambda l: l.lot_id) if wo.component_id_3.tracking != 'none' else lines_3
                 wo.component_remaining_qty_3 = self._prepare_component_quantity(move_3, wo.qty_producing) - sum(completed_lines_3.mapped('qty_done'))
                 wo.component_uom_id_3 = lines[:1].product_uom_id
 
+            if wo.test_type_4 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_4 == 'none':
                 move_4 = wo.current_quality_check_id_4.workorder_line_id.move_id
                 lines_4 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_4)
                 completed_lines_4 = lines_4.filtered(lambda l: l.lot_id) if wo.component_id_4.tracking != 'none' else lines_4
                 wo.component_remaining_qty_4 = self._prepare_component_quantity(move_4, wo.qty_producing) - sum(completed_lines_4.mapped('qty_done'))
                 wo.component_uom_id_4 = lines[:1].product_uom_id
 
+            if wo.test_type_5 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_5 == 'none':
                 move_5 = wo.current_quality_check_id_5.workorder_line_id.move_id
                 lines_5 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_5)
                 completed_lines_5 = lines_5.filtered(lambda l: l.lot_id) if wo.component_id_5.tracking != 'none' else lines_5
@@ -433,7 +437,6 @@ class MrpProductionWorkcenterLine(models.Model):
             checks = self.check_ids.filtered(lambda c: c.finished_product_sequence == self.qty_produced)
             # curr_pos = params.get('position') and params.get('position') + 1
             curr_pos = params.get('position')
-
             vals = {
                 'allow_producing_quantity_change': True if curr_pos == 0 and all(c.quality_state == 'none' for c in checks) else False,
                 'current_quality_check_id': check_id,
@@ -445,7 +448,6 @@ class MrpProductionWorkcenterLine(models.Model):
                 'is_last_step': check_id == False and check_id_2 == False and check_id_3 == False and check_id_4 == False and check_id_5 == False,
                 'worksheet_page': next_check_5.point_id.worksheet_page if change_worksheet_page else self.worksheet_page,
             }
-
             self.write(vals)
         return res
 
@@ -460,6 +462,7 @@ class MrpProductionWorkcenterLine(models.Model):
         """
         
         self.ensure_one()
+        by_product_data = ('register_byproducts', 'register_consumed_materials')
         rounding = self.product_uom_id.rounding
         workorder_line_id_2 = self.current_quality_check_id_2.workorder_line_id
         workorder_line_id_3 = self.current_quality_check_id_3.workorder_line_id
@@ -468,82 +471,144 @@ class MrpProductionWorkcenterLine(models.Model):
         if float_compare(self.qty_producing, 0, precision_rounding=rounding) <= 0\
                 or float_compare(self.qty_producing, self.qty_remaining, precision_rounding=rounding) > 0:
             raise UserError(_('Please ensure the quantity to produce is nonnegative and does not exceed the remaining quantity.'))
-        elif self.test_type in ('register_byproducts', 'register_consumed_materials'):
+        elif self.test_type in by_product_data:
             # Form validation
             # in case we use continue production instead of validate button.
             # We would like to consume 0 and leave lot_id blank to close the consumption
             if self.component_tracking != 'none' and not self.lot_id and self.qty_done != 0:
                 raise UserError(_('Please enter a Lot/SN.'))
-            if self.component_tracking_2 != 'none' and not self.lot_id_2 and self.qty_done_2 != 0:
-                raise UserError(_('Please enter a Lot/SN.'))
-            if self.component_tracking_3 != 'none' and not self.lot_id_3 and self.qty_done_3 != 0:
-                raise UserError(_('Please enter a Lot/SN.'))
-            if self.component_tracking_4 != 'none' and not self.lot_id_4 and self.qty_done_4 != 0:
-                raise UserError(_('Please enter a Lot/SN.'))
-            if self.component_tracking_5 != 'none' and not self.lot_id_5 and self.qty_done_5 != 0:
-                raise UserError(_('Please enter a Lot/SN.'))
             if float_compare(self.qty_done, 0, precision_rounding=rounding) < 0:
-                raise UserError(_('Please enter a positive quantity.'))
-            if float_compare(self.qty_done_2, 0, precision_rounding=rounding) < 0:
-                raise UserError(_('Please enter a positive quantity.'))
-            if float_compare(self.qty_done_3, 0, precision_rounding=rounding) < 0:
-                raise UserError(_('Please enter a positive quantity.'))
-            if float_compare(self.qty_done_4, 0, precision_rounding=rounding) < 0:
-                raise UserError(_('Please enter a positive quantity.'))
-            if float_compare(self.qty_done_5, 0, precision_rounding=rounding) < 0:
                 raise UserError(_('Please enter a positive quantity.'))
 
             # Get the move lines associated with our component
             self.component_remaining_qty -= float_round(self.qty_done, precision_rounding=self.workorder_line_id.product_uom_id.rounding or rounding)
-            self.component_remaining_qty_2 -= float_round(self.qty_done_2, precision_rounding=workorder_line_id_2.product_uom_id.rounding or rounding)
-            self.component_remaining_qty_3 -= float_round(self.qty_done_3, precision_rounding=workorder_line_id_3.product_uom_id.rounding or rounding)
-            self.component_remaining_qty_4 -= float_round(self.qty_done_4, precision_rounding=workorder_line_id_4.product_uom_id.rounding or rounding)
-            self.component_remaining_qty_5 -= float_round(self.qty_done_5, precision_rounding=workorder_line_id_5.product_uom_id.rounding or rounding)
 
             # Write the lot and qty to the move line
             self.workorder_line_id.write({'lot_id': self.lot_id.id, 'qty_done': float_round(self.qty_done, precision_rounding=self.workorder_line_id.product_uom_id.rounding or rounding)})
-            workorder_line_id_2.write({'lot_id': self.lot_id_2.id, 'qty_done': float_round(self.qty_done_2, precision_rounding=workorder_line_id_2.product_uom_id.rounding or rounding)})
-            workorder_line_id_3.write({'lot_id': self.lot_id_3.id, 'qty_done': float_round(self.qty_done_3, precision_rounding=workorder_line_id_3.product_uom_id.rounding or rounding)})
-            workorder_line_id_4.write({'lot_id': self.lot_id_4.id, 'qty_done': float_round(self.qty_done_4, precision_rounding=workorder_line_id_4.product_uom_id.rounding or rounding)})
-            workorder_line_id_5.write({'lot_id': self.lot_id_5.id, 'qty_done': float_round(self.qty_done_5, precision_rounding=workorder_line_id_5.product_uom_id.rounding or rounding)})
 
-            if continue_production:
-                self._create_subsequent_checks()
-            elif float_compare(self.component_remaining_qty, 0, precision_rounding=rounding) < 0 and\
+            # if continue_production:
+            #     self._create_subsequent_checks()
+            # elif float_compare(self.component_remaining_qty, 0, precision_rounding=rounding) < 0 and\
+            if not continue_production and float_compare(self.component_remaining_qty, 0, precision_rounding=rounding) < 0 and\
                     self.consumption == 'strict':
                 # '< 0' as it's not possible to click on validate if qty_done < component_remaining_qty
                 raise UserError(_('You should consume the quantity of %s defined in the BoM. If you want to consume more or less components, change the consumption setting on the BoM.') % (self.component_id and self.component_id[0].name))
-            elif float_compare(self.component_remaining_qty_2, 0, precision_rounding=rounding) < 0 and \
+
+        elif self.test_type_2 in by_product_data:
+            # Form validation
+            # in case we use continue production instead of validate button.
+            # We would like to consume 0 and leave lot_id blank to close the consumption
+            if self.component_tracking_2 != 'none' and not self.lot_id_2 and self.qty_done_2 != 0:
+                raise UserError(_('Please enter a Lot/SN.'))
+            if float_compare(self.qty_done_2, 0, precision_rounding=rounding) < 0:
+                raise UserError(_('Please enter a positive quantity.'))
+
+            # Get the move lines associated with our component
+            self.component_remaining_qty_2 -= float_round(self.qty_done_2, precision_rounding=workorder_line_id_2.product_uom_id.rounding or rounding)
+
+            # Write the lot and qty to the move line
+            workorder_line_id_2.write({'lot_id': self.lot_id_2.id, 'qty_done': float_round(self.qty_done_2, precision_rounding=workorder_line_id_2.product_uom_id.rounding or rounding)})
+
+            # if continue_production:
+            #     self._create_subsequent_checks()
+            # elif float_compare(self.component_remaining_qty_2, 0, precision_rounding=rounding) < 0 and \
+            if not continue_production and float_compare(self.component_remaining_qty_2, 0, precision_rounding=rounding) < 0 and \
                     self.consumption == 'strict':
                 # '< 0' as it's not possible to click on validate if qty_done < component_remaining_qty
                 raise UserError(_('You should consume the quantity of %s defined in the BoM. If you want to consume more or less components, change the consumption setting on the BoM.') % (self.component_id_2 and self.component_id_2[0].name))
-            elif float_compare(self.component_remaining_qty_3, 0, precision_rounding=rounding) < 0 and \
+
+        elif self.test_type_3 in by_product_data:
+            # Form validation
+            # in case we use continue production instead of validate button.
+            # We would like to consume 0 and leave lot_id blank to close the consumption
+            if self.component_tracking_3 != 'none' and not self.lot_id_3 and self.qty_done_3 != 0:
+                raise UserError(_('Please enter a Lot/SN.'))
+            if float_compare(self.qty_done_3, 0, precision_rounding=rounding) < 0:
+                raise UserError(_('Please enter a positive quantity.'))
+
+            # Get the move lines associated with our component
+            self.component_remaining_qty_3 -= float_round(self.qty_done_3, precision_rounding=workorder_line_id_3.product_uom_id.rounding or rounding)
+
+            # Write the lot and qty to the move line
+            workorder_line_id_3.write({'lot_id': self.lot_id_3.id, 'qty_done': float_round(self.qty_done_3, precision_rounding=workorder_line_id_3.product_uom_id.rounding or rounding)})
+
+            # if continue_production:
+            #     self._create_subsequent_checks()
+            # elif float_compare(self.component_remaining_qty_3, 0, precision_rounding=rounding) < 0 and \
+            if not continue_production and float_compare(self.component_remaining_qty_3, 0, precision_rounding=rounding) < 0 and \
                     self.consumption == 'strict':
                 # '< 0' as it's not possible to click on validate if qty_done < component_remaining_qty
                 raise UserError(_('You should consume the quantity of %s defined in the BoM. If you want to consume more or less components, change the consumption setting on the BoM.') % (self.component_id_3 and self.component_id_3[0].name))
-            elif float_compare(self.component_remaining_qty_4, 0, precision_rounding=rounding) < 0 and \
+
+        elif self.test_type_4 in by_product_data:
+            # Form validation
+            # in case we use continue production instead of validate button.
+            # We would like to consume 0 and leave lot_id blank to close the consumption
+            if self.component_tracking_4 != 'none' and not self.lot_id_4 and self.qty_done_4 != 0:
+                raise UserError(_('Please enter a Lot/SN.'))
+            if float_compare(self.qty_done_4, 0, precision_rounding=rounding) < 0:
+                raise UserError(_('Please enter a positive quantity.'))
+
+            # Get the move lines associated with our component
+            self.component_remaining_qty_4 -= float_round(self.qty_done_4, precision_rounding=workorder_line_id_4.product_uom_id.rounding or rounding)
+
+            # Write the lot and qty to the move line
+            workorder_line_id_4.write({'lot_id': self.lot_id_4.id, 'qty_done': float_round(self.qty_done_4, precision_rounding=workorder_line_id_4.product_uom_id.rounding or rounding)})
+
+            # if continue_production:
+            #     self._create_subsequent_checks()
+            # elif float_compare(self.component_remaining_qty_4, 0, precision_rounding=rounding) < 0 and \
+            if not continue_production and float_compare(self.component_remaining_qty_4, 0, precision_rounding=rounding) < 0 and \
                     self.consumption == 'strict':
                 # '< 0' as it's not possible to click on validate if qty_done < component_remaining_qty
                 raise UserError(_('You should consume the quantity of %s defined in the BoM. If you want to consume more or less components, change the consumption setting on the BoM.') % (self.component_id_4 and self.component_id_4[0].name))
 
-            elif float_compare(self.component_remaining_qty_5, 0, precision_rounding=rounding) < 0 and \
+        elif self.test_type_5 in by_product_data:
+            # Form validation
+            # in case we use continue production instead of validate button.
+            # We would like to consume 0 and leave lot_id blank to close the consumption
+            if self.component_tracking_5 != 'none' and not self.lot_id_5 and self.qty_done_5 != 0:
+                raise UserError(_('Please enter a Lot/SN.'))
+            if float_compare(self.qty_done_5, 0, precision_rounding=rounding) < 0:
+                raise UserError(_('Please enter a positive quantity.'))
+
+            # Get the move lines associated with our component
+            self.component_remaining_qty_5 -= float_round(self.qty_done_5, precision_rounding=workorder_line_id_5.product_uom_id.rounding or rounding)
+
+            # Write the lot and qty to the move line
+            workorder_line_id_5.write({'lot_id': self.lot_id_5.id, 'qty_done': float_round(self.qty_done_5, precision_rounding=workorder_line_id_5.product_uom_id.rounding or rounding)})
+
+            # if continue_production:
+            #     self._create_subsequent_checks()
+            # elif float_compare(self.component_remaining_qty_5, 0, precision_rounding=rounding) < 0 and \
+            if not continue_production and float_compare(self.component_remaining_qty_5, 0, precision_rounding=rounding) < 0 and \
                     self.consumption == 'strict':
                 # '< 0' as it's not possible to click on validate if qty_done < component_remaining_qty
                 raise UserError(_('You should consume the quantity of %s defined in the BoM. If you want to consume more or less components, change the consumption setting on the BoM.') % (self.component_id_5 and self.component_id_5[0].name))
 
+        if continue_production and (self.test_type in by_product_data or self.test_type_2 in by_product_data or self.test_type_3 in by_product_data or self.test_type_4 in by_product_data or self.test_type_5 in by_product_data):
+                self._create_subsequent_checks()
+
         if self.test_type == 'picture' and not self.picture:
             raise UserError(_('Please upload a picture.'))
+        if self.test_type_2 == 'picture' and not self.picture_2:
+            raise UserError(_('Please upload a picture.'))
+        if self.test_type_3 == 'picture' and not self.picture_3:
+            raise UserError(_('Please upload a picture.'))
+        if self.test_type_4 == 'picture' and not self.picture_4:
+            raise UserError(_('Please upload a picture.'))
+        if self.test_type_5 == 'picture' and not self.picture_5:
+            raise UserError(_('Please upload a picture.'))
 
-        if self.test_type not in ('measure', 'passfail'):
-            if self.current_quality_check_id:
+        if self.test_type not in ('measure', 'passfail') and self.current_quality_check_id:
                 self.current_quality_check_id.do_pass()
-            if self.current_quality_check_id_2:
+        if self.test_type_2 not in ('measure', 'passfail') and self.current_quality_check_id_2:
                 self.current_quality_check_id_2.do_pass()
-            if self.current_quality_check_id_3:
+        if self.test_type_3 not in ('measure', 'passfail') and self.current_quality_check_id_3:
                 self.current_quality_check_id_3.do_pass()
-            if self.current_quality_check_id_4:
+        if self.test_type_4 not in ('measure', 'passfail') and self.current_quality_check_id_4:
                 self.current_quality_check_id_4.do_pass()
-            if self.current_quality_check_id_5:
+        if self.test_type_5 not in ('measure', 'passfail') and self.current_quality_check_id_5:
                 self.current_quality_check_id_5.do_pass()
         
         if self.skip_completed_checks:
@@ -582,6 +647,7 @@ class MrpProductionWorkcenterLine(models.Model):
 
 
         for current_quality_check in quality_check_id_ids:
+            test_type = current_quality_check.test_type_id.test_type
             parent_id = current_quality_check
             if parent_id.parent_id:
                 parent_id = parent_id.parent_id
@@ -594,10 +660,12 @@ class MrpProductionWorkcenterLine(models.Model):
                     self.workorder_line_id.write({'qty_to_consume': self.workorder_line_id.qty_done})
                 # Check if it exists a workorder line not used. If it could not find
                 # one, create it without prefilled values.
-                elif not self._defaults_from_workorder_lines(self.workorder_line_id.move_id, self.test_type):
+                # elif not self._defaults_from_workorder_lines(self.workorder_line_id.move_id, self.test_type):
+                elif not self._defaults_from_workorder_lines(self.workorder_line_id.move_id, test_type):
                     moves = self.env['stock.move']
                     workorder_line_values = {}
-                    if self.test_type == 'register_byproducts':
+                    # if self.test_type == 'register_byproducts':
+                    if test_type == 'register_byproducts':
                         moves |= self.move_finished_ids.filtered(lambda m: m.state not in ('done', 'cancel') and m.product_id == self.component_id)
                         workorder_line_values['finished_workorder_id'] = self.id
                     else:
@@ -632,3 +700,42 @@ class MrpProductionWorkcenterLine(models.Model):
                 move = parent_id.workorder_line_id.move_id
                 quality_check_data.update(self._defaults_from_workorder_lines(move, current_quality_check.test_type))
                 check_created = self.env['quality.check'].create(quality_check_data)
+
+    def do_pass(self):
+        # self.ensure_one()
+        # self.current_quality_check_id.do_pass()
+        if self.test_type_2 in ('measure', 'passfail'):
+            self.current_quality_check_id_2.do_pass()
+        if self.test_type_3 in ('measure', 'passfail'):
+            self.current_quality_check_id_3.do_pass()
+        if self.test_type_4 in ('measure', 'passfail'):
+            self.current_quality_check_id_4.do_pass()
+        if self.test_type_5 in ('measure', 'passfail'):
+            self.current_quality_check_id_5.do_pass()
+        return super(MrpProductionWorkcenterLine, self).do_pass()
+
+    def do_fail(self):
+        # self.ensure_one()
+        # self.current_quality_check_id.do_fail()
+        if self.test_type_2 in ('measure', 'passfail'):
+            self.current_quality_check_id_2.do_fail()
+        if self.test_type_3 in ('measure', 'passfail'):
+            self.current_quality_check_id_3.do_fail()
+        if self.test_type_4 in ('measure', 'passfail'):
+            self.current_quality_check_id_4.do_fail()
+        if self.test_type_5 in ('measure', 'passfail'):
+            self.current_quality_check_id_5.do_fail()
+        return super(MrpProductionWorkcenterLine, self).do_fail()
+
+    def do_measure(self):
+        # self.ensure_one()
+        # self.current_quality_check_id.do_measure()
+        if self.test_type_2 in ('measure', 'passfail'):
+            self.current_quality_check_id_2.do_measure()
+        if self.test_type_3 in ('measure', 'passfail'):
+            self.current_quality_check_id_3.do_measure()
+        if self.test_type_4 in ('measure', 'passfail'):
+            self.current_quality_check_id_4.do_measure()
+        if self.test_type_5 in ('measure', 'passfail'):
+            self.current_quality_check_id_5.do_measure()
+        return super(MrpProductionWorkcenterLine, self).do_measure()

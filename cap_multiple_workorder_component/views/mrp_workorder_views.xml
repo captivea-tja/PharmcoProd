@@ -1,10 +1,15 @@
 <odoo>
+
     <record id="cap_mrp_workorder_view_form_tablet_inherited" model="ir.ui.view">
         <field name="name">cap.mrp.workorder.view.form.tablet.inherited</field>
         <field name="model">mrp.workorder</field>
         <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='finished_lot_id']" position="after">
+                <field name="test_type_2" invisible="1"/>
+                <field name="test_type_3" invisible="1"/>
+                <field name="test_type_4" invisible="1"/>
+                <field name="test_type_5" invisible="1"/>
                 <field name="test_type_all" invisible="1"/>
                 <field name="component_qty_to_do_all" invisible="1"/>
             </xpath>
@@ -18,18 +23,24 @@
                 <!-- , ('component_qty_to_do_all', '=', True) -->
                 <!-- <atribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '=', True), ('test_type', 'not in', ['register_consumed_materials', 'register_byproducts']), ('consumption', '=', 'strict'), '&amp;', ('consumption', '=', 'flexible'), ('component_qty_to_do', '&lt;', 0)]}</atribute> -->
             </xpath>
+            <xpath expr="//div[hasclass('workorder_picture')]" position="after">
+                <field name="picture_2" widget="tablet_image" attrs="{'invisible': [('test_type_2', '!=', 'picture')]}"/>
+                <field name="picture_3" widget="tablet_image" attrs="{'invisible': [('test_type_3', '!=', 'picture')]}"/>
+                <field name="picture_4" widget="tablet_image" attrs="{'invisible': [('test_type_4', '!=', 'picture')]}"/>
+                <field name="picture_5" widget="tablet_image" attrs="{'invisible': [('test_type_5', '!=', 'picture')]}"/>
+            </xpath>
             <xpath expr="//div[hasclass('o_workorder_form')]" position="after">
-                <div id="component_2" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_2', '=', False), ('test_type', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
+                <div id="component_2" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_2', '=', False), ('test_type_2', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
                     <div class="o_workorder_field">
-                        <div attrs="{'invisible': [('test_type', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
-                        <div attrs="{'invisible': [('test_type', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
+                        <div attrs="{'invisible': [('test_type_2', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
+                        <div attrs="{'invisible': [('test_type_2', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
                         <field name="component_id_2" options="{'no_open': True}" readonly="1"/>
                     </div>
                     <div class="o_workorder_field">
                         <div class="o_workorder_lot">
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'serial')]}">Serial Number</div>
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'lot')]}">Lot Number</div>
-                            <field name="lot_id_2" class="text-center o_lot_number" context="{'default_product_id': component_id_2, 'default_company_id': company_id, 'active_mo_id': test_type == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_2), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                            <field name="lot_id_2" class="text-center o_lot_number" context="{'default_product_id': component_id_2, 'default_company_id': company_id, 'active_mo_id': test_type_2 == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_2), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
                         </div>
                     </div>
                     <div class="o_workorder_field text-right">
@@ -42,17 +53,17 @@
                         </div>
                     </div>
                 </div>
-                <div id="component_3" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_3', '=', False), ('test_type', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
+                <div id="component_3" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_3', '=', False), ('test_type_3', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
                     <div class="o_workorder_field">
-                        <div attrs="{'invisible': [('test_type', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
-                        <div attrs="{'invisible': [('test_type', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
+                        <div attrs="{'invisible': [('test_type_3', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
+                        <div attrs="{'invisible': [('test_type_3', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
                         <field name="component_id_3" options="{'no_open': True}" readonly="1"/>
                     </div>
                     <div class="o_workorder_field">
                         <div class="o_workorder_lot">
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'serial')]}">Serial Number</div>
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'lot')]}">Lot Number</div>
-                            <field name="lot_id_3" class="text-center o_lot_number" context="{'default_product_id': component_id_3, 'default_company_id': company_id, 'active_mo_id': test_type == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_3), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                            <field name="lot_id_3" class="text-center o_lot_number" context="{'default_product_id': component_id_3, 'default_company_id': company_id, 'active_mo_id': test_type_3 == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_3), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
                         </div>
                     </div>
                     <div class="o_workorder_field text-right">
@@ -65,17 +76,17 @@
                         </div>
                     </div>
                 </div>
-                <div id="component_4" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_4', '=', False), ('test_type', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
+                <div id="component_4" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_4', '=', False), ('test_type_4', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
                     <div class="o_workorder_field">
-                        <div attrs="{'invisible': [('test_type', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
-                        <div attrs="{'invisible': [('test_type', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
+                        <div attrs="{'invisible': [('test_type_4', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
+                        <div attrs="{'invisible': [('test_type_4', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
                         <field name="component_id_4" options="{'no_open': True}" readonly="1"/>
                     </div>
                     <div class="o_workorder_field">
                         <div class="o_workorder_lot">
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'serial')]}">Serial Number</div>
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'lot')]}">Lot Number</div>
-                            <field name="lot_id_4" class="text-center o_lot_number" context="{'default_product_id': component_id_4, 'default_company_id': company_id, 'active_mo_id': test_type == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_4), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                            <field name="lot_id_4" class="text-center o_lot_number" context="{'default_product_id': component_id_4, 'default_company_id': company_id, 'active_mo_id': test_type_4 == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_4), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
                         </div>
                     </div>
                     <div class="o_workorder_field text-right">
@@ -88,17 +99,17 @@
                         </div>
                     </div>
                 </div>
-                <div id="component_5" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_5', '=', False), ('test_type', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
+                <div id="component_5" class="o_workorder_bar_content o_workorder_form" attrs="{'invisible': ['|', '|', ('component_id_5', '=', False), ('test_type_5', 'not in', ('register_byproducts', 'register_consumed_materials')), ('is_last_step', '=', True)]}">
                     <div class="o_workorder_field">
-                        <div attrs="{'invisible': [('test_type', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
-                        <div attrs="{'invisible': [('test_type', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
+                        <div attrs="{'invisible': [('test_type_5', '=', 'register_byproducts')]}" class="o_form_label">Component</div>
+                        <div attrs="{'invisible': [('test_type_5', '=', 'register_consumed_materials')]}" class="o_form_label">By-product</div>
                         <field name="component_id_5" options="{'no_open': True}" readonly="1"/>
                     </div>
                     <div class="o_workorder_field">
                         <div class="o_workorder_lot">
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'serial')]}">Serial Number</div>
                             <div class="o_form_label" attrs="{'invisible': [('component_tracking', '!=', 'lot')]}">Lot Number</div>
-                            <field name="lot_id_5" class="text-center o_lot_number" context="{'default_product_id': component_id_5, 'default_company_id': company_id, 'active_mo_id': test_type == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_5), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                            <field name="lot_id_5" class="text-center o_lot_number" context="{'default_product_id': component_id_5, 'default_company_id': company_id, 'active_mo_id': test_type_5 == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id_5), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
                         </div>
                     </div>
                     <div class="o_workorder_field text-right">
@@ -114,4 +125,43 @@
             </xpath>
         </field>
     </record>
+
+    <record id="cap_mrp_workorder_view_form_tablet_inherited_new" model="ir.ui.view">
+        <field name="name">cap.mrp.workorder.view.form.tablet.inherited.new</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="quality_mrp_workorder.mrp_workorder_view_form_tablet_inherit_quality"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_workorder_data')]/div[1]" position="after">
+                <field class="o_workorder_note" name="note_2"/>
+                <div attrs="{'invisible': [('test_type_2', '!=', 'measure')]}" name="measure_2" class="o_row mb8">
+                    <field name="test_type_2" invisible="1"/>
+                    <label for="measure_2" string="Measure:" />
+                    <field name="measure_2" attrs="{'required': [('test_type_2', '=', 'measure')]}" class="oe_inline"/>
+                    <field name="norm_unit_2" readonly="1" />
+                </div>
+                <field class="o_workorder_note" name="note_3"/>
+                <div attrs="{'invisible': [('test_type_3', '!=', 'measure')]}" name="measure_3" class="o_row mb8">
+                    <field name="test_type_3" invisible="1"/>
+                    <label for="measure_3" string="Measure:" />
+                    <field name="measure_3" attrs="{'required': [('test_type_3', '=', 'measure')]}" class="oe_inline"/>
+                    <field name="norm_unit_3" readonly="1" />
+                </div>
+                <field class="o_workorder_note" name="note_4"/>
+                <div attrs="{'invisible': [('test_type_4', '!=', 'measure')]}" name="measure_4" class="o_row mb8">
+                    <field name="test_type_4" invisible="1"/>
+                    <label for="measure_4" string="Measure:" />
+                    <field name="measure_4" attrs="{'required': [('test_type_4', '=', 'measure')]}" class="oe_inline"/>
+                    <field name="norm_unit_4" readonly="1" />
+                </div>
+                <field class="o_workorder_note" name="note_5"/>
+                <div attrs="{'invisible': [('test_type_5', '!=', 'measure')]}" name="measure_5" class="o_row mb8">
+                    <field name="test_type_5" invisible="1"/>
+                    <label for="measure_5" string="Measure:" />
+                    <field name="measure_5" attrs="{'required': [('test_type_5', '=', 'measure')]}" class="oe_inline"/>
+                    <field name="norm_unit_5" readonly="1" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
