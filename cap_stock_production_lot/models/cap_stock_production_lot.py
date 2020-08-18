@@ -52,20 +52,18 @@ class ProductionLot(models.Model):
             
     @api.model_create_multi
     def create(self, vals_list):
-        
-    
-    
         res = super(ProductionLot,self).create(vals_list)
-        
         #res._set_container_on_ref()
         seq_num = res.name
-        base35 = self.base35encode(int(seq_num))
-        cont = 'D' + base35.zfill(6)
+        if seq_num.isnumeric():
+            base35 = self.base35encode(int(seq_num))
+            cont = 'D' + base35.zfill(6)
+        else:
+            cont = seq_num
         res.write({
             'name': cont,
             'ref': cont,
         })
-        
         return res
             
             
