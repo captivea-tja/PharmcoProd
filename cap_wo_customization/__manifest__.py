@@ -16,7 +16,7 @@
     'category': 'Manufacturing/Manufacturing',
 
     # any module necessary for this one to work correctly
-    'depends': ['cap_multiple_workorder_component'],
+    'depends': ['cap_multiple_workorder_component', 'cap_mrp_customization'],
 
     # always loaded
     'data': [

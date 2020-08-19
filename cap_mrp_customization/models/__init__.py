@@ -7,3 +7,4 @@ from . import stock_move
 from . import stock_inventory
 from . import mrp_production
 from . import purchase
+from . import mrp_workorder

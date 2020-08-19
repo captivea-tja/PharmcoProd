@@ -21,19 +21,6 @@ class MrpProduction(models.Model):
         ('PALLET', 'PALLET'), ('TANKER', 'TANKER'), ('TOTE', 'TOTE'), ('TRAY', 'TRAY')], string="Container Type")
     manufacture_date = fields.Date(string="Date of Manufacture", default=lambda self: fields.Date.today())
 
-    def record_production(self):
-        res = super(MrpProduction, self).record_production()
-        for line in self.finished_move_line_ids:
-            if line.lot_id:
-                line.lot_id.manufacturer_lot = self.production_id.manufacturer_lot
-                line.lot_id.tare_weight = self.production_id.tare_weight
-                line.lot_id.gross_weight = self.production_id.gross_weight
-                line.lot_id.component_weight = self.production_id.component_weight
-                line.lot_id.container_type = self.production_id.container_type
-                line.lot_id.supplier_lot = self.production_id.supplier_lot
-                line.lot_id.supplier_id = self.production_id.supplier_id.id
-        return res
-
     @api.depends('tare_weight', 'product_qty', 'move_raw_ids')
     def _compute_gross_weight(self):
         for line in self:
