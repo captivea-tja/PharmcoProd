@@ -162,28 +162,28 @@ class MrpProductionWorkcenterLine(models.Model):
                 lines_2 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_2)
                 completed_lines_2 = lines_2.filtered(lambda l: l.lot_id) if wo.component_id_2.tracking != 'none' else lines_2
                 wo.component_remaining_qty_2 = self._prepare_component_quantity(move_2, wo.qty_producing) - sum(completed_lines_2.mapped('qty_done'))
-                wo.component_uom_id_2 = lines[:1].product_uom_id
+                wo.component_uom_id_2 = lines_2[:1].product_uom_id
 
             if wo.test_type_3 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_3 == 'none':
                 move_3 = wo.current_quality_check_id_3.workorder_line_id.move_id
                 lines_3 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_3)
                 completed_lines_3 = lines_3.filtered(lambda l: l.lot_id) if wo.component_id_3.tracking != 'none' else lines_3
                 wo.component_remaining_qty_3 = self._prepare_component_quantity(move_3, wo.qty_producing) - sum(completed_lines_3.mapped('qty_done'))
-                wo.component_uom_id_3 = lines[:1].product_uom_id
+                wo.component_uom_id_3 = lines_3[:1].product_uom_id
 
             if wo.test_type_4 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_4 == 'none':
                 move_4 = wo.current_quality_check_id_4.workorder_line_id.move_id
                 lines_4 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_4)
                 completed_lines_4 = lines_4.filtered(lambda l: l.lot_id) if wo.component_id_4.tracking != 'none' else lines_4
                 wo.component_remaining_qty_4 = self._prepare_component_quantity(move_4, wo.qty_producing) - sum(completed_lines_4.mapped('qty_done'))
-                wo.component_uom_id_4 = lines[:1].product_uom_id
+                wo.component_uom_id_4 = lines_4[:1].product_uom_id
 
             if wo.test_type_5 in ('register_byproducts', 'register_consumed_materials') and wo.quality_state_5 == 'none':
                 move_5 = wo.current_quality_check_id_5.workorder_line_id.move_id
                 lines_5 = wo._workorder_line_ids().filtered(lambda l: l.move_id == move_5)
                 completed_lines_5 = lines_5.filtered(lambda l: l.lot_id) if wo.component_id_5.tracking != 'none' else lines_5
                 wo.component_remaining_qty_5 = self._prepare_component_quantity(move_5, wo.qty_producing) - sum(completed_lines_5.mapped('qty_done'))
-                wo.component_uom_id_5 = lines[:1].product_uom_id
+                wo.component_uom_id_5 = lines_5[:1].product_uom_id
 
         return res
 
