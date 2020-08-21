@@ -1,0 +1,23 @@
+<odoo>
+    <record id="quality_alert_view_form_inherit_qac" model="ir.ui.view">
+        <field name="name">quality.alert.view.form.inherit.qac</field>
+        <field name="model">quality.alert</field>
+        <field name="inherit_id"
+               ref="quality_control.quality_alert_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="validate_visible" invisible="1"/>
+                <button name="do_validate" class="oe_highlight"
+                        string="Validate" type="object"
+                        attrs="{'invisible': [('validate_visible', '=', False)]}"/>
+                <!--<button
+                        name="%(cap_quality_customization.action_password_confirmation)d"
+                        class="oe_highlight" string="Validate" type="action"
+                        attrs="{'invisible': [('validate_visible', '=', False)]}"/>-->
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="user_ids" widget="many2many_tags" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
